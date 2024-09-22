@@ -6,21 +6,65 @@
     <link href="https://cdn.jsdelivr.net/npm/daisyui@3.9.4/dist/full.css" rel="stylesheet" type="text/css" />
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+    <!-- Font Awesome for Icons -->
+  <link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+  integrity="sha384-k6RqeWeci5ZR/Lv4MR0sA0FfDOM9g4qzTTK2fDJSJf3EZ7pFcJbLDac4uQRp6eR8"
+  crossorigin="anonymous"
+/>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
         @import url('https://fonts.googleapis.com/css2?family=Lobster&family=Playfair+Display&display=swap');
         @import url('https://fonts.googleapis.com/css2?family=Alegreya:ital@1&family=Lobster&family=Lobster+Two&display=swap');
 
-        .logo a {
-            color: white;
-            font-size: 2.0rem;
-            text-decoration: none;
-            font-family: 'Times New Roman', Times, monospace;
+        body {
+            background-color: white;
+            color: black;
+            transition: background-color 0.3s ease, color 0.3s ease;
         }
 
-        .logo a:hover {
-            color: aqua;
-        }
+        /* Custom Light Mode Text Colors */
+.text-light-primary {
+    color: #333;
+}
+.text-light-secondary {
+    color: #666;
+}
+
+/* Dark Mode Styles */
+.dark-mode {
+    background-color: #1a202c;
+    color: white;
+}
+
+/* Custom Dark Mode Text Colors */
+.dark-mode .text-dark-primary {
+    color: #e2e8f0; /* Light gray for primary text */
+}
+.dark-mode .text-dark-secondary {
+    color: #a0aec0; /* Soft gray for secondary text */
+}
+
+.dark-mode a {
+    color: #90cdf4; /* Light blue links in dark mode */
+}
+
+.dark-mode .card {
+    background-color: #2d3748; /* Darker background for cards */
+    color: white;
+}
+
+.logo a {
+    color: white;
+    font-size: 2.0rem;
+    text-decoration: none;
+    font-family: 'Times New Roman', Times, monospace;
+}
+
+.logo a:hover {
+    color: aqua;
+}
 
         #below {
             font-size: 1.3rem;
@@ -36,6 +80,9 @@
                 <div class="logo">
                     <a href="index.html">A R S<div id="below">Portfolio</div><span class="loading loading-infinity loading-lg"></span></a>
                 </div>
+                <button id="theme-toggle" class="btn btn-outline rounded-full text-white">
+                    Toggle Theme
+                </button>
                 <div class="lg:space-x-6">
                     <button class="btn">
                         <a href="index.html" class="text-white">HOME</a>
@@ -132,7 +179,9 @@
     <br>
 
     <p class="text-center text-3xl font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;">Some of my <strong>group and individual projects:</strong></p>
+
     <section class="mt-16 text-center mx-auto flex flex-wrap justify-center gap-10">
+        <!-- First Row: Project 1 and Project 2 stay at the top -->
         <div>
             <div class="card w-120 bg-base-100 shadow-xl">
                 <figure class="px-10 pt-10">
@@ -147,7 +196,7 @@
                 </div>
             </div>
         </div>
-
+    
         <div>
             <div class="card w-120 bg-base-100 shadow-xl">
                 <figure class="px-10 pt-10">
@@ -162,8 +211,73 @@
                 </div>
             </div>
         </div>
-
-        <!-- New Project -->
+    </section>
+    
+    <!-- New Section: Remaining 5 Projects aligned below -->
+    <section class="mt-8 text-center mx-auto flex flex-wrap justify-center gap-10">
+        <!-- New Project 1 -->
+        <div>
+            <div class="card w-120 bg-base-100 shadow-xl">
+                <figure class="px-10 pt-10">
+                    <i class="fas fa-calculator fa-4x text-gray-600"></i>
+                </figure>
+                <div class="card-body items-center text-center">
+                    <h2 class="card-title">Calculator Mobile App</h2>
+                    <p><strong>Individual Project</strong> - A mobile app for calculations</p>
+                    <div class="card-actions">
+                        <button class="btn btn-primary"><a href="https://github.com/Shafin543/Mobile-App-Calculator" target="_blank">View on GitHub</a></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+        <!-- New Project 2 -->
+        <div>
+            <div class="card w-120 bg-base-100 shadow-xl">
+                <figure class="px-10 pt-10">
+                    <i class="fas fa-vials fa-4x text-gray-600"></i>
+                </figure>
+                <div class="card-body items-center text-center">
+                    <h2 class="card-title">GlucoLab</h2>
+                    <p><strong>Group Project</strong> - A project for glucose lab management</p>
+                    <div class="card-actions">
+                        <button class="btn btn-primary"><a href="https://github.com/Shafin543/Gluco-Lab" target="_blank">View on GitHub</a></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+        <!-- New Project 3 -->
+        <div>
+            <div class="card w-120 bg-base-100 shadow-xl">
+                <figure class="px-10 pt-10">
+                    <i class="fas fa-gamepad fa-4x text-gray-600"></i>
+                </figure>
+                <div class="card-body items-center text-center">
+                    <h2 class="card-title">Arcgames</h2>
+                    <p><strong>Self Project</strong> - A collection of arcade games</p>
+                    <div class="card-actions">
+                        <button class="btn btn-primary"><a href="https://shafin543.github.io/Arcgames/" target="_blank">Visit<i class="fas fa-hand-pointer"></i></a></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+        <!-- New Project 4 -->
+        <div>
+            <div class="card w-120 bg-base-100 shadow-xl">
+                <figure class="px-10 pt-10">
+                    <i class="fas fa-cloud-sun-rain fa-4x text-gray-600"></i>
+                </figure>
+                <div class="card-body items-center text-center">
+                    <h2 class="card-title">YourWeather</h2>
+                    <p><strong>Self Project</strong> - A weather forecasting website</p>
+                    <div class="card-actions">
+                        <button class="btn btn-primary"><a href="https://shafin543.github.io/YourWeather/" target="_blank">Visit<i class="fas fa-hand-pointer"></i></a></button>
+                    </div>
+                </div>
+            </div>
+        </div>
         <div>
             <div class="card w-120 bg-base-100 shadow-xl">
                 <figure class="px-10 pt-10">
@@ -179,6 +293,9 @@
             </div>
         </div>
     </section>
+    
+        
+
 
     <footer class="mt-12 w-full">
         <div class="flex justify-center bg-slate-600">
@@ -208,5 +325,31 @@
             </div>
         </div>
     </footer>
+    <script>
+        // Function to toggle the theme and store the preference in localStorage
+        function toggleTheme() {
+            const body = document.body;
+            const currentTheme = localStorage.getItem('theme');
+
+            if (currentTheme === 'dark') {
+                body.classList.remove('dark-mode');
+                localStorage.setItem('theme', 'light');
+            } else {
+                body.classList.add('dark-mode');
+                localStorage.setItem('theme', 'dark');
+            }
+        }
+
+        // Event listener for the button
+        document.getElementById('theme-toggle').addEventListener('click', toggleTheme);
+
+        // Set the theme based on stored preference when the page loads
+        window.onload = function () {
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme === 'dark') {
+                document.body.classList.add('dark-mode');
+            }
+        };
+    </script>
 </body>
 </html>
