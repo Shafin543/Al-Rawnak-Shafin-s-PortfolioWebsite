@@ -7,12 +7,12 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
     <!-- Font Awesome for Icons -->
-  <link
-  rel="stylesheet"
-  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
-  integrity="sha384-k6RqeWeci5ZR/Lv4MR0sA0FfDOM9g4qzTTK2fDJSJf3EZ7pFcJbLDac4uQRp6eR8"
-  crossorigin="anonymous"
-/>
+    <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    integrity="sha384-k6RqeWeci5ZR/Lv4MR0sA0FfDOM9g4qzTTK2fDJSJf3EZ7pFcJbLDac4uQRp6eR8"
+    crossorigin="anonymous"
+    />
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
         @import url('https://fonts.googleapis.com/css2?family=Lobster&family=Playfair+Display&display=swap');
@@ -22,81 +22,203 @@
             background-color: white;
             color: black;
             transition: background-color 0.3s ease, color 0.3s ease;
+            /* Background Image for Website */
+            background-image: url('new.jpg');
+            background-size: cover;
+            background-attachment: fixed;
         }
 
         /* Custom Light Mode Text Colors */
-.text-light-primary {
-    color: #333;
-}
-.text-light-secondary {
-    color: #666;
-}
+        .text-light-primary {
+            color: #4d4c4c;
+        }
+        .text-light-secondary {
+            color: #494848;
+        }
 
-/* Dark Mode Styles */
-.dark-mode {
-    background-color: #1a202c;
-    color: white;
-}
+        /* Dark Mode Styles */
+        .dark-mode {
+            background-color: #1a202c;
+            color: white;
+        }
 
-/* Custom Dark Mode Text Colors */
-.dark-mode .text-dark-primary {
-    color: #e2e8f0; /* Light gray for primary text */
-}
-.dark-mode .text-dark-secondary {
-    color: #a0aec0; /* Soft gray for secondary text */
-}
+        /* Custom Dark Mode Text Colors */
+        .dark-mode .text-dark-primary {
+            color: #e2e8f0; /* Light gray for primary text */
+        }
+        .dark-mode .text-dark-secondary {
+            color: #a0aec0; /* Soft gray for secondary text */
+        }
 
-.dark-mode a {
-    color: #90cdf4; /* Light blue links in dark mode */
-}
+        .dark-mode a {
+            color: #90cdf4; /* Light blue links in dark mode */
+        }
 
-.dark-mode .card {
-    background-color: #2d3748; /* Darker background for cards */
-    color: white;
-}
+        .dark-mode .card {
+            background-color: #2d3748; /* Darker background for cards */
+            color: white;
+        }
 
-.logo a {
-    color: white;
-    font-size: 2.0rem;
-    text-decoration: none;
-    font-family: 'Times New Roman', Times, monospace;
-}
+        .logo a {
+            color: white;
+            font-size: 2.0rem;
+            text-decoration: none;
+            font-family: 'Times New Roman', Times, monospace;
+        }
 
-.logo a:hover {
-    color: aqua;
-}
+        .logo a:hover {
+            color: aqua;
+        }
 
         #below {
             font-size: 1.3rem;
             font-family: 'Rockwell Extra Bold', Rockwell Bold, monospace;
         }
+
+        /* Styles for Sidebar */
+        .sidebar {
+            position: fixed;
+            top: 0;
+            right: -300px;
+            height: 100%;
+            width: 250px;
+            background-color: rgba(44, 62, 80, 0.9);
+            transition: 0.3s;
+            z-index: 999;
+        }
+        
+        .sidebar.open {
+            right: 0;
+        }
+
+        .sidebar ul {
+            list-style-type: none;
+            padding: 20px;
+            margin: 0;
+        }
+
+        .sidebar ul li {
+            padding: 15px;
+            text-align: center;
+        }
+
+        .sidebar ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 1.5rem;
+        }
+
+        .sidebar ul li a:hover {
+            color: aqua;
+        }
+
+        .sidebar-close {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 2rem;
+            cursor: pointer;
+            color: white;
+        }
+
+        @media (min-width: 1024px) {
+    .desktop-nav {
+        display: flex;
+    }
+    .sidebar {
+        display: none; /* Always hidden on desktop */
+    }
+
+
+}
+
+/* Mobile view (max-width: 1023px) */
+@media (max-width: 1023px) {
+    .desktop-nav {
+        display: none; /* Hide desktop navigation */
+    }
+    .sidebar {
+        display: block;
+    }
+}
+
+/* Additional utility to toggle sidebar visibility */
+.sidebar.hidden {
+    display: none;
+}
     </style>
     <title>WWW.ARS.COM</title>
 </head>
-<body style="background-image: url(new.jpg);">
-    <header class="hero bg-center h-24 min-h-0 md:min-h-full relative flex;">
+<body>
+    <!-- Sidebar Toggle Button -->
+    <div class="sidebar-toggle lg:hidden fixed top-4 right-4 z-50">
+        <button id="sidebar-toggle-btn" class="btn btn-outline rounded-full text-white">Menu</button>
+    </div>
+
+    <!-- Start of the Sidebar -->
+    <div id="sidebar" class="sidebar">
+        <span class="sidebar-close" id="close-btn">&times;</span>
+        <ul>
+            <li><a href="index.html">HOME</a></li>
+            <li><a href="CV.html">CV</a></li>
+            <li><a href="research.html">RESEARCH</a></li>
+            <li><a href="achievements.html">ACHIEVEMENTS</a></li>
+            <li><a href="sendmessage.html">Send Message</a></li>
+        </ul>
+    </div>
+    <!-- End of the Sidebar -->
+
+    <header class="hero bg-center h-24 min-h-0 md:min-h-full relative flex">
         <div class="bg-opacity-0 p-4 absolute top-0 left-0 right-0">
             <div class="flex items-center justify-between">
                 <div class="logo">
-                    <a href="index.html">A R S<div id="below">Portfolio</div><span class="loading loading-infinity loading-lg"></span></a>
+                    <a href="index.html">A R S<div id="below">Portfolio</div>
+                        <span class="loading loading-infinity loading-lg"></span></a>
                 </div>
-                <button id="theme-toggle" class="btn btn-outline rounded-full text-white">
-                    Toggle Theme
-                </button>
-                <div class="lg:space-x-6">
-                    <button class="btn">
-                        <a href="index.html" class="text-white">HOME</a>
+    
+                <!-- Desktop navigation menu (Hidden on mobile) -->
+                <nav class="desktop-nav hidden lg:flex space-x-6">
+                    <div class="lg:space-x-6">
+                        <button class="btn">
+                            <a href="index.html" class="text-white">HOME</a>
+                        </button>
+                        <a href="CV.html" class="text-white hover:text-blue-600">CV</a>
+                        <a href="research.html" class="text-white hover:text-blue-600">RESEARCH</a>
+                        <a href="achievements.html" class="text-white hover:text-blue-600">ACHIEVEMENTS</a>
+                        <button class="btn btn-outline rounded-full text-white">
+                            <a href="sendmessage.html">Send Message</a><i class="fas fa-paper-plane"></i>
+                        </button>
+                    </div>   
+                </nav>
+    
+                <!-- Removed the mobile sidebar toggle button -->
+                
+                <!-- Toggle for Light/Dark Mode -->
+                <div>
+                    <button id="theme-toggle" class="text-white">
+                        <i id="theme-icon" class="fas fa-sun"></i>
                     </button>
-                    <a href="CV.html" class="text-white hover:text-blue-600">CV</a>
-                    <a href="research.html" class="text-white hover:text-blue-600">RESEARCH</a>
-                    <a href="achievements.html" class="text-white hover:text-blue-600">ACHIEVEMENTS</a>
-                    <button class="btn btn-outline rounded-full text-white">
-                        <a href="sendmessage.html">Send Message</a><i class="fas fa-paper-plane"></i>
-                    </button>
-                </div>   
-            </div>     
+                </div>
+            </div>
         </div>
     </header>
+    
+    
+    <!-- Mobile Sidebar (Hidden by default) -->
+    <aside id="sidebar" class="sidebar hidden lg:hidden fixed right-0 top-0 h-screen w-64 bg-black text-white">
+        <button id="sidebar-close" class="absolute top-4 right-4 text-white">
+            <i class="fas fa-times"></i>
+        </button>
+        <ul class="mt-12">
+            <li><a href="index.html">HOME</a></li>
+            <li><a href="CV.html">CV</a></li>
+            <li><a href="research.html">RESEARCH</a></li>
+            <li><a href="achievements.html">ACHIEVEMENTS</a></li>
+            <li><a href="sendmessage.html">Send Message</a></li>
+        </ul>
+    </aside>
+    
+    
 
     <section class="mt-16 mx-auto text-center w-1/2">
         <div class="text-neutral-content p-4 text-center">
@@ -138,6 +260,29 @@
             </div>
         </div>
     </section>
+    <section id="experience" class="py-8 ">
+        <div class="container mx-auto">
+            <h2 class="text-4xl font-bold text-center mb-8">Experience</h2>
+    
+            <div class="experience-item bg-gray-800 shadow-md p-4 rounded-lg flex items-center space-x-6">
+                <!-- Daraz Icon -->
+                <div class="flex-shrink-0">
+                    <img src="/daraz-logo-AA537DF718-seeklogo.com.png" alt="Daraz Bangladesh Limited" class="h-16 w-16">
+                </div>
+                
+                <!-- Experience Details -->
+                <div>
+                    <h3 class="text-2xl font-semibold">Daraz Bangladesh Limited</h3>
+                    <p class="text-neutral-300">Intern, IT Department</p>
+                    <p class="text-gray-500">7th October 2024 - 3rd January 2025</p>
+                    <p class="mt-4 text-neutral-300">
+                        Worked as an IT intern at Daraz Bangladesh Limited, contributing to various projects and providing support to the IT department.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
 
     <section class="mt-16 mx-auto text-center w-1/2 relative">
       <div class="collapse bg-slate-900">
@@ -168,6 +313,16 @@
                 <p>
                     <strong>Autumn 2021</strong><br>
                     Finished Algorithm with good grades.
+                </p>
+                <br>
+                <p>
+                    <strong>Autumn 2021</strong><br>
+                    Finished Algorithm with good grades.
+                </p>
+                <br>
+                <p>
+                    <strong>Summer 2024</strong><br>
+                    I have completed all my academic courses within this semester! 
                 </p>
                 <br>
                 <p class="text-center">FOR MORE:</p>
@@ -351,5 +506,90 @@
             }
         };
     </script>
+<script>
+    // Sidebar toggle functionality for mobile/tablet view
+    const sidebar = document.getElementById("sidebar");
+    const sidebarToggleBtn = document.getElementById("sidebar-toggle-btn");
+    const closeBtn = document.getElementById("close-btn");
+
+    sidebarToggleBtn.addEventListener("click", function() {
+        sidebar.classList.add("open");
+    });
+
+    closeBtn.addEventListener("click", function() {
+        sidebar.classList.remove("open");
+    });
+
+    // Toggle Theme (Dark/Light Mode)
+    const themeToggle = document.getElementById("theme-toggle");
+    const themeIcon = document.getElementById("theme-icon");
+    const body = document.body;
+
+    themeToggle.addEventListener("click", function() {
+        body.classList.toggle("dark-mode");
+        if (body.classList.contains("dark-mode")) {
+            themeIcon.classList.replace("fa-sun", "fa-moon");
+        } else {
+            themeIcon.classList.replace("fa-moon", "fa-sun");
+        }
+        
+    });
+    // JavaScript for handling both sidebar toggle and theme toggle functionality
+
+document.addEventListener('DOMContentLoaded', function() {
+    // Sidebar Toggle Functionality
+
+    // Sidebar toggle button (hamburger menu) for mobile
+    const sidebarToggleBtn = document.getElementById('sidebar-toggle');
+    // Sidebar close button (X) for mobile
+    const sidebarCloseBtn = document.getElementById('sidebar-close');
+    // Sidebar element
+    const sidebar = document.getElementById('sidebar');
+
+    // When the sidebar toggle button is clicked (shows sidebar)
+    sidebarToggleBtn.addEventListener('click', function() {
+        sidebar.classList.toggle('hidden'); // Toggle the 'hidden' class to show/hide sidebar
+    });
+
+    // When the sidebar close button is clicked (hides sidebar)
+    sidebarCloseBtn.addEventListener('click', function() {
+        sidebar.classList.add('hidden'); // Add the 'hidden' class to ensure it's hidden
+    });
+
+    // Theme Toggle Functionality
+
+    const themeToggleBtn = document.getElementById('theme-toggle');
+    const themeIcon = document.getElementById('theme-icon');
+
+    // Check if dark mode was previously selected by the user
+    if (localStorage.getItem('theme') === 'dark') {
+        document.documentElement.classList.add('dark');
+        themeIcon.classList.remove('fa-sun');
+        themeIcon.classList.add('fa-moon');
+    } else {
+        document.documentElement.classList.remove('dark');
+        themeIcon.classList.remove('fa-moon');
+        themeIcon.classList.add('fa-sun');
+    }
+
+    // When the theme toggle button is clicked
+    themeToggleBtn.addEventListener('click', function() {
+        // Toggle between dark and light themes
+        if (document.documentElement.classList.contains('dark')) {
+            document.documentElement.classList.remove('dark');
+            themeIcon.classList.remove('fa-moon');
+            themeIcon.classList.add('fa-sun');
+            localStorage.setItem('theme', 'light'); // Store the preference in localStorage
+        } else {
+            document.documentElement.classList.add('dark');
+            themeIcon.classList.remove('fa-sun');
+            themeIcon.classList.add('fa-moon');
+            localStorage.setItem('theme', 'dark'); // Store the preference in localStorage
+        }
+    });
+});
+
+</script>
+
 </body>
-</html>
+</html>  
