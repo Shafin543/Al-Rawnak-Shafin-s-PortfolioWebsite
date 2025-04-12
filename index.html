@@ -27,6 +27,22 @@
             background-size: cover;
             background-attachment: fixed;
         }
+        @keyframes colorCycle {
+    0%   { color: #ffffff; }   /* Initial white */
+    20%  { color: #60a5fa; }   /* Tailwind blue-400 */
+    40%  { color: #38bdf8; }   /* Sky blue */
+    60%  { color: #a78bfa; }   /* Purple-ish (soft highlight) */
+    80%  { color: #facc15; }   /* Yellow gold (matches your footer text highlight) */
+    100% { color: #ffffff; }   /* Back to white */
+}
+
+.cycle-rgb {
+    animation: colorCycle 4s infinite ease-in-out;
+    font-weight: bold;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.6);
+}
+
+
 
         /* Custom Light Mode Text Colors */
         .text-light-primary {
@@ -47,7 +63,7 @@
             color: #e2e8f0; /* Light gray for primary text */
         }
         .dark-mode .text-dark-secondary {
-            color: #a0aec0; /* Soft gray for secondary text */
+            color: #b3c4da; /* Soft gray for secondary text */
         }
 
         .dark-mode a {
@@ -58,6 +74,14 @@
             background-color: #2d3748; /* Darker background for cards */
             color: white;
         }
+        /* Improve readability in light mode */
+        body:not(.dark-mode) h1,
+        body:not(.dark-mode) h2,
+        body:not(.dark-mode) h3 {
+           text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.6); /* Light shadow for dark backgrounds */
+        }
+
+        
 
         .logo a {
             color: white;
@@ -152,8 +176,11 @@
 <body>
     <!-- Sidebar Toggle Button -->
     <div class="sidebar-toggle lg:hidden fixed top-4 right-4 z-50">
-        <button id="sidebar-toggle-btn" class="btn btn-outline rounded-full text-white">Menu</button>
+        <button id="sidebar-toggle-btn" class="btn btn-outline rounded-full text-white bg-opacity-10 backdrop-blur-md bg-black hover:bg-opacity-30 transition">
+            Menu
+        </button>
     </div>
+    
 
     <!-- Start of the Sidebar -->
     <div id="sidebar" class="sidebar">
@@ -172,15 +199,18 @@
         <div class="bg-opacity-0 p-4 absolute top-0 left-0 right-0">
             <div class="flex items-center justify-between">
                 <div class="logo">
-                    <a href="index.html">A R S<div id="below">Portfolio</div>
-                        <span class="loading loading-infinity loading-lg"></span></a>
+                    <a href="index.html">
+                        <span class="cycle-rgb">A R S</span>
+                        <div id="below" class="cycle-rgb">Portfolio</div>
+                        <span class="loading loading-infinity loading-lg cycle-rgb"></span>
+                    </a>
                 </div>
     
                 <!-- Desktop navigation menu (Hidden on mobile) -->
                 <nav class="desktop-nav hidden lg:flex space-x-6">
                     <div class="lg:space-x-6">
                         <button class="btn">
-                            <a href="index.html" class="text-white">HOME</a>
+                            <a href="index.html" class="text-white hover:text-blue-200">HOME</a>
                         </button>
                         <a href="CV.html" class="text-white hover:text-blue-600">CV</a>
                         <a href="research.html" class="text-white hover:text-blue-600">RESEARCH</a>
@@ -191,17 +221,18 @@
                     </div>   
                 </nav>
     
-                <!-- Removed the mobile sidebar toggle button -->
-                
                 <!-- Toggle for Light/Dark Mode -->
                 <div>
-                    <button id="theme-toggle" class="text-white">
-                        <i id="theme-icon" class="fas fa-sun"></i>
+                    <button id="theme-toggle" class="text-white text-3xl p-2">
+                        <i id="theme-icon" class="fas fa-sun" style="font-size: 28px;"></i>
+
                     </button>
+                    
                 </div>
             </div>
         </div>
     </header>
+    
     
     
     <!-- Mobile Sidebar (Hidden by default) -->
@@ -231,6 +262,13 @@
                             <img src="NDSC_0015.jpg" />
                         </div>
                     </div>
+                    <div class="collapse collapse-arrow bg-primary text-primary-content shadow-xl mt-8">
+                        <input type="checkbox" class="peer" />
+                        <div class="collapse-title flex items-center justify-center gap-2 text-2xl font-bold text-center">
+                            🗂️ <span>About Me</span>
+                          </div>
+                          
+                    <div class="collapse-content text-center px-6">
                     <p class="font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif; py-8 text-l font-bold text-white-600">
                         Assalamualaikum, I'm <strong>AL RAWNAK SHAFIN</strong> — welcome to my portfolio!
                     
@@ -325,45 +363,57 @@
     
     
 
-    <section class="mt-16 mx-auto text-center w-1/2 relative">
-        <div class="collapse bg-slate-900 transition-all duration-300 ease-in-out">
+    <section class="mt-16 w-full text-center relative px-4">
+        <div class="collapse bg-slate-900 transition-all duration-300 ease-in-out w-full">
             <input type="checkbox" class="peer" /> 
-            <div class="collapse-title bg-primary text-primary-content peer-checked:bg-accent peer-checked:text-secondary-content transition-colors duration-300">
+            <div class="collapse-title bg-primary text-primary-content peer-checked:bg-accent peer-checked:text-secondary-content transition-colors duration-300 w-full">
                 <h2 class="text-2xl font-bold mb-6 hover:text-blue-600">
-                    🎓 Education Background <i class="fas fa-hand-pointer"></i>
+                    🎓 <br> Education Background <i class="fas fa-hand-pointer"></i>
                 </h2>
             </div>
-              <div class="collapse-content bg-primary text-primary-content peer-checked:bg-secondary peer-checked:text-secondary-content transition-all duration-300 ease-in-out"> 
-                  <p class="mb-4">
-                      <strong>🎓 B.Sc. in Computer Science and Engineering</strong><br>
-                      🏫 Independent University, Bangladesh (IUB)<br>
-                      📍 Bashundhara R/A, Dhaka, Bangladesh<br>
-                      📅 <em>2020 - 2025</em>
-                  </p>
-                  <br>
-                  <p class="mb-4">
-                      <strong> Higher Secondary Certificate (HSC)</strong><br>
-                       Group: Science<br>
-                      🏫 Ideal College Dhanmondi<br>
-                      📍 Dhanmondi Central Road, Dhaka, Bangladesh
-                  </p>
-                  <br>
-                  <p class="mb-4">
-                      <strong> Secondary School Certificate (SSC)</strong><br>
-                       Group: Science<br>
-                      🏫 Dhanmondi Govt. Boys High School<br>
-                      📍 Manik Mia Avenue, Dhaka, Bangladesh
-                  </p>
-                  <br>
-                  <p class="text-center">FOR MORE:</p>
-                  <a href="Transcript2030543.pdf" class="hover:text-green-500">Download my <strong>TRANSCRIPT</strong> for detailed breakdown <i class="fas fa-hand-pointer"></i></a>
-              </div>
-          </div>
-      </section>
+            <div class="collapse-content bg-primary text-primary-content peer-checked:bg-secondary peer-checked:text-secondary-content transition-all duration-300 ease-in-out">
+                <div class="flex flex-col items-center justify-center px-4 sm:px-6 md:px-8 space-y-6">
+                    <div class="text-center">
+                        <p class="mb-2">
+                            <strong>🎓 <br> B.Sc. in Computer Science and Engineering</strong><br>
+                            🏫 Independent University, Bangladesh (IUB)<br>
+                            📍 Bashundhara R/A, Dhaka, Bangladesh<br>
+                            📅 <em>2020 - 2025</em>
+                        </p>
+                    </div>
+                    <div class="text-center">
+                        <p class="mb-2">
+                            <strong>Higher Secondary Certificate (HSC)</strong><br>
+                            Group: Science<br>
+                            🏫 Ideal College Dhanmondi<br>
+                            📍 Dhanmondi Central Road, Dhaka, Bangladesh
+                        </p>
+                    </div>
+                    <div class="text-center">
+                        <p class="mb-2">
+                            <strong>Secondary School Certificate (SSC)</strong><br>
+                            Group: Science<br>
+                            🏫 Dhanmondi Govt. Boys High School<br>
+                            📍 Manik Mia Avenue, Dhaka, Bangladesh
+                        </p>
+                    </div>
+                    <div class="text-center">
+                        <p>FOR MORE:</p>
+                        <a href="Transcript2030543.pdf" class="hover:text-green-500">
+                            Download my <strong>TRANSCRIPT</strong> for detailed breakdown <i class="fas fa-hand-pointer"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    
       
     <br>
     <br>
 
+    
     <p class="text-center text-3xl font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;">Some of my <strong>group and individual projects:</strong></p>
 
     <section class="mt-16 text-center mx-auto flex flex-wrap justify-center gap-10">
@@ -398,6 +448,7 @@
             </div>
         </div>
     </section>
+
     
     <!-- New Section: Remaining 5 Projects aligned below -->
     <section class="mt-8 text-center mx-auto flex flex-wrap justify-center gap-10">
@@ -483,8 +534,8 @@
         
 
 
-    <footer class="mt-12 w-full">
-        <div class="flex justify-center bg-slate-600">
+    <footer class="mt-12 w-full bg-slate-200 dark:bg-slate-900 text-black dark:text-white">
+        <div class="flex justify-center bg-slate-200 dark:bg-slate-900 transition-colors duration-300">
             <div class="mt-8 flex mb-8 space-x-4">
                 <a href="https://www.facebook.com/alrawnak.shafin/" class="text-blue-500 hover:text-blue-600">
                     <i class="fab fa-facebook fa-2x"></i>
@@ -504,7 +555,8 @@
                 </a>
             </div>
         </div>
-        <div class="text-center bg-slate-600 text-white p-1">
+        <div class="text-center bg-slate-200 dark:bg-slate-900 text-black dark:text-white transition-colors duration-300 p-1">
+
             <div class="">
                 <p style="font-family: Rockwell Extra Bold, Rockwell Bold, monospace; font-weight: normal;">Follow my social medias!</p>
                 <p style="font-family: Rockwell Extra Bold, Rockwell Bold, monospace; font-weight: normal;"><em>Created by </em><span class="text-yellow-600"><em>Al Rawnak Shafin</em></span></p>
@@ -514,28 +566,33 @@
     <script>
         // Function to toggle the theme and store the preference in localStorage
         function toggleTheme() {
-            const body = document.body;
-            const currentTheme = localStorage.getItem('theme');
+    const body = document.body;
+    const currentTheme = localStorage.getItem('theme');
 
-            if (currentTheme === 'dark') {
-                body.classList.remove('dark-mode');
-                localStorage.setItem('theme', 'light');
-            } else {
-                body.classList.add('dark-mode');
-                localStorage.setItem('theme', 'dark');
-            }
-        }
+    if (currentTheme === 'dark') {
+        body.classList.remove('dark');
+        localStorage.setItem('theme', 'light');
+        document.getElementById('theme-icon').classList.replace('fa-moon', 'fa-sun');
+    } else {
+        body.classList.add('dark');
+        localStorage.setItem('theme', 'dark');
+        document.getElementById('theme-icon').classList.replace('fa-sun', 'fa-moon');
+    }
+}
+
 
         // Event listener for the button
         document.getElementById('theme-toggle').addEventListener('click', toggleTheme);
 
         // Set the theme based on stored preference when the page loads
         window.onload = function () {
-            const savedTheme = localStorage.getItem('theme');
-            if (savedTheme === 'dark') {
-                document.body.classList.add('dark-mode');
-            }
-        };
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme === 'dark') {
+        document.body.classList.add('dark');
+        document.getElementById('theme-icon').classList.replace('fa-sun', 'fa-moon');
+    }
+};
+
     </script>
 <script>
     // Sidebar toggle functionality for mobile/tablet view
